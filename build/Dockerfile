@@ -1,6 +1,3 @@
-# Use carlosedp/golang for riscv64 support
-FROM carlosedp/golang:1.18 AS build
-
 # Install dependencies
 RUN apt-get update && apt-get install -y git build-essential libsecret-1-dev
 
