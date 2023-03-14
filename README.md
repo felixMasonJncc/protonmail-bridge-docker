@@ -1,16 +1,15 @@
 # ProtonMail IMAP/SMTP Bridge Docker Container
 
-![version badge](https://img.shields.io/docker/v/shenxn/protonmail-bridge)
-![image size badge](https://img.shields.io/docker/image-size/shenxn/protonmail-bridge/build)
-![docker pulls badge](https://img.shields.io/docker/pulls/shenxn/protonmail-bridge)
+![version badge](https://img.shields.io/docker/v/ganeshlab/protonbridge)
+![docker pulls badge](https://img.shields.io/docker/pulls/ganeshlab/protonbridge)
 ![deb badge](https://github.com/shenxn/protonmail-bridge-docker/workflows/pack%20from%20deb/badge.svg)
 ![build badge](https://github.com/shenxn/protonmail-bridge-docker/workflows/build%20from%20source/badge.svg)
 
 This is an unofficial Docker container of the [ProtonMail Bridge](https://protonmail.com/bridge/). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker).
 
-Docker Hub: [https://hub.docker.com/r/shenxn/protonmail-bridge](https://hub.docker.com/r/shenxn/protonmail-bridge)
+Docker Hub: [https://hub.docker.com/r/ganeshlab/protonbridge](https://hub.docker.com/r/ganeshlab/protonbridge)
 
-GitHub: [https://github.com/shenxn/protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
+GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.com/ganeshlab/protonmail-bridge-docker)
 
 ## ARM Support
 
