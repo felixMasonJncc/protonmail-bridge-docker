@@ -1,5 +1,5 @@
-FROM ubuntu:bionic
-LABEL maintainer="Xiaonan Shen <s@sxn.dev>"
+FROM ubuntu:jammy
+LABEL maintainer="ganeshlab"
 
 EXPOSE 25/tcp
 EXPOSE 143/tcp
