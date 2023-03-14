@@ -3,35 +3,28 @@
 ![version badge](https://img.shields.io/docker/v/ganeshlab/protonbridge)
 ![docker pulls badge](https://img.shields.io/docker/pulls/ganeshlab/protonbridge)
 
-This is an unofficial Docker container of the [ProtonMail Bridge](https://protonmail.com/bridge/). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker).
+This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker).
 
 Docker Hub: [https://hub.docker.com/r/ganeshlab/protonbridge](https://hub.docker.com/r/ganeshlab/protonbridge)
 
 GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.com/ganeshlab/protonmail-bridge-docker)
 
-## ARM Support
-
-We now support ARM devices (`arm64` and `arm/v7`)! Use the images tagged with `build`. See next section for details.
-
 ## Tags
 
-There are two types of images.
  - `deb`: Images based on the official [.deb release](https://protonmail.com/bridge/install). It only supports the `amd64` architecture.
- - `build`: Images based on the [source code](https://github.com/ProtonMail/proton-bridge). It supports `amd64`, `arm64`, `arm/v7` and `riscv64`. Supporting to more architectures is possible. PRs are welcome.
 
 tag | description
  -- | --
 `latest` | latest `deb` image
 `[version]` | `deb` images
-`build` | latest `build` image
-`[version]-build` | `build` images
+`dev` | latest `pre-release` image
 
 ## Initialization
 
 To initialize and add account to the bridge, run the following command.
 
 ```
-docker run --rm -it -v protonmail:/root shenxn/protonmail-bridge init
+docker run --rm -it -v protonmail:/root ganeshlab/protonbridge init
 ```
 
 Wait for the bridge to startup, use `login` command and follow the instructions to add your account into the bridge. Then use `info` to see the configuration information (username and password). After that, use `exit` to exit the bridge. You may need `CTRL+C` to exit the docker entirely.
@@ -41,21 +34,15 @@ Wait for the bridge to startup, use `login` command and follow the instructions 
 To run the container, use the following command.
 
 ```
-docker run -d --name=protonmail-bridge -v protonmail:/root -p 1025:25/tcp -p 1143:143/tcp --restart=unless-stopped shenxn/protonmail-bridge
+docker run -d --name=protonbridge -v protonmail:/root -p 1025:25/tcp -p 1143:143/tcp --restart=unless-stopped ganeshlab/protonbridge
 ```
-
-## Kubernetes
-
-If you want to run this image in a Kubernetes environment. You can use the [Helm](https://helm.sh/) chart (https://github.com/k8s-at-home/charts/tree/master/charts/stable/protonmail-bridge) created by [@Eagleman7](https://github.com/Eagleman7). More details can be found in [#23](https://github.com/shenxn/protonmail-bridge-docker/issues/23).
-
-If you don't want to use Helm, you can also reference to the guide ([#6](https://github.com/shenxn/protonmail-bridge-docker/issues/6)) written by [@ghudgins](https://github.com/ghudgins).
 
 ## Security
 
 Please be aware that running the command above will expose your bridge to the network. Remember to use firewall if you are going to run this in an untrusted network or on a machine that has public IP address. You can also use the following command to publish the port to only localhost, which is the same behavior as the official bridge package.
 
 ```
-docker run -d --name=protonmail-bridge -v protonmail:/root -p 127.0.0.1:1025:25/tcp -p 127.0.0.1:1143:143/tcp --restart=unless-stopped shenxn/protonmail-bridge
+docker run -d --name=protonbridge -v protonmail:/root -p 127.0.0.1:1025:25/tcp -p 127.0.0.1:1143:143/tcp --restart=unless-stopped ganeshlab/protonbridge
 ```
 
 Besides, you can publish only port 25 (SMTP) if you don't need to receive any email (e.g. as a email notification service).
