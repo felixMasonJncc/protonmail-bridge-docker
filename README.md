@@ -12,8 +12,8 @@ GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.c
 
 tag | description
  -- | --
-`latest` | latest `stable amd64` image
-`dev` | latest `pre-release amd64` image
+`latest` | latest `stable amd64 deb` image
+`dev` | latest `pre-release amd64 deb` image
 `build` | latest `arm64/v8` image based on v3 branch<sup>1</sup>
 
 1: *"Gluon used to have some C++ dependencies which needed to be compiled first; those have since been removed, but Bridge's master branch doesn't yet point to this newer version of Gluon. Please be aware that the v3 branch has not undergone any of our standard pre-release checks. Use with caution."* [# 323](https://github.com/ProtonMail/proton-bridge/issues/323#issuecomment-1462705455)
