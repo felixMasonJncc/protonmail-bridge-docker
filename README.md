@@ -16,8 +16,8 @@ GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.c
 tag | description
  -- | --
 `latest` | latest `deb` image
-`[version]` | `deb` images
 `dev` | latest `pre-release` image
+`build` | latest `armv8` image
 
 ## Initialization
 
