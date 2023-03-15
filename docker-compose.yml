@@ -1,0 +1,11 @@
+version: "3"
+services:
+  protonbridge:
+    image: ganeshlab/protonbridge:latest
+    container_name: protonbridge
+    restart: unless-stopped
+    volumes:
+      - './protonmail:/root'
+    ports:
+      - '1025:25/tcp'
+      - '1143:143/tcp'  
