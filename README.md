@@ -2,7 +2,7 @@
 
 ![docker pulls badge](https://img.shields.io/docker/pulls/ganeshlab/protonmail-bridge)
 
-This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker).
+This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker). Fork of [shenxn's work](https://github.com/shenxn/protonmail-bridge-docker), all credit to them.
 
 Docker Hub: [https://hub.docker.com/r/ganeshlab/protonmail-bridge](https://hub.docker.com/r/ganeshlab/protonmail-bridge)
 
