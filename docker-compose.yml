@@ -1,8 +1,8 @@
 version: "3"
 services:
   protonbridge:
-    image: ganeshlab/protonbridge:latest
-    container_name: protonbridge
+    image: ganeshlab/protonmail-bridge:latest
+    container_name: protonmail-bridge
     restart: unless-stopped
     volumes:
       - './protonmail:/root'
