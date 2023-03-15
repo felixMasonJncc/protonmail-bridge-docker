@@ -7,7 +7,7 @@ VERSION=v3
 # Clone new code
 git clone -b v3 --single-branch https://github.com/ProtonMail/proton-bridge.git
 cd proton-bridge
-git checkout v$VERSION
+git checkout $VERSION
 sed -i 's/127.0.0.1/0.0.0.0/g' internal/constants/constants.go
 
 ARCH=$(uname -m)
