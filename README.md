@@ -1,6 +1,6 @@
 # ProtonMail IMAP/SMTP Bridge Docker Container
 
-![version badge](https://img.shields.io/docker/v/ganeshlab/protonmail-bridge
+![version badge](https://img.shields.io/docker/v/ganeshlab/protonmail-bridge]
 ![docker pulls badge](https://img.shields.io/docker/pulls/ganeshlab/protonbridge)
 
 This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker).
