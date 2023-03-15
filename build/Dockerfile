@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y git build-essential libsecret-1-dev
 
 # Build
 WORKDIR /build/
-COPY build.sh VERSION /build/
+COPY build.sh /build/
 RUN bash build.sh
 
 FROM ubuntu:jammy
