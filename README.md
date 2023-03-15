@@ -23,7 +23,7 @@ tag | description
 To initialize and add account to the bridge, run the following command.
 
 ```
-docker run --rm -it -v ./protonmail:/root ganeshlab/protonmail-bridge init
+docker run --rm -it -v /path/to/data:/root ganeshlab/protonmail-bridge init
 ```
 
 Wait for the bridge to startup, use `login` command and follow the instructions to add your account into the bridge. Then use `info` to see the configuration information (username and password). After that, use `exit` to exit the bridge. You may need `CTRL+C` to exit the docker entirely.
@@ -34,7 +34,7 @@ To run the container, use one of the following examples:
 
 ## docker
 ```
-docker run -d --name=protonmail-bridge -v ./protonmail:/root -p 1025:25/tcp -p 1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
+docker run -d --name=protonmail-bridge -v /path/to/data:/root -p 1025:25/tcp -p 1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
 ```
 
 ## docker-compose
@@ -47,7 +47,7 @@ services:
     container_name: protonmail-bridge
     restart: unless-stopped
     volumes:
-      - './protonmail:/root'
+      - '/path/to/data:/root'
     ports:
       - '1025:25/tcp'
       - '1143:143/tcp'        
@@ -58,7 +58,7 @@ services:
 Please be aware that running the command above will expose your bridge to the network. Remember to use firewall if you are going to run this in an untrusted network or on a machine that has public IP address. You can also use the following command to publish the port to only localhost, which is the same behavior as the official bridge package.
 
 ```
-docker run -d --name=protonmail-bridge -v ./protonmail:/root -p 127.0.0.1:1025:25/tcp -p 127.0.0.1:1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
+docker run -d --name=protonmail-bridge -v /path/to/data:/root -p 127.0.0.1:1025:25/tcp -p 127.0.0.1:1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
 ```
 
 Besides, you can publish only port 25 (SMTP) if you don't need to receive any email (e.g. as a email notification service).
