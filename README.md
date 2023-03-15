@@ -23,7 +23,7 @@ tag | description
 To initialize and add account to the bridge, run the following command.
 
 ```
-docker run --rm -it -v protonmail:/root ganeshlab/protonmail-bridge init
+docker run --rm -it -v ./protonmail:/root ganeshlab/protonmail-bridge init
 ```
 
 Wait for the bridge to startup, use `login` command and follow the instructions to add your account into the bridge. Then use `info` to see the configuration information (username and password). After that, use `exit` to exit the bridge. You may need `CTRL+C` to exit the docker entirely.
