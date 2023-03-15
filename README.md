@@ -4,7 +4,7 @@
 
 This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker).
 
-Docker Hub: [https://hub.docker.com/r/ganeshlab/protonbridge](https://hub.docker.com/r/ganeshlab/protonbridge)
+Docker Hub: [https://hub.docker.com/r/ganeshlab/protonmail-bridge](https://hub.docker.com/r/ganeshlab/protonmail-bridge)
 
 GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.com/ganeshlab/protonmail-bridge-docker)
 
@@ -23,7 +23,7 @@ tag | description
 To initialize and add account to the bridge, run the following command.
 
 ```
-docker run --rm -it -v protonmail:/root ganeshlab/protonbridge init
+docker run --rm -it -v protonmail:/root ganeshlab/protonmail-bridge init
 ```
 
 Wait for the bridge to startup, use `login` command and follow the instructions to add your account into the bridge. Then use `info` to see the configuration information (username and password). After that, use `exit` to exit the bridge. You may need `CTRL+C` to exit the docker entirely.
@@ -34,7 +34,7 @@ To run the container, use one of the following examples:
 
 ## docker
 ```
-docker run -d --name=protonbridge -v ./protonmail:/root -p 1025:25/tcp -p 1143:143/tcp --restart=unless-stopped ganeshlab/protonbridge
+docker run -d --name=protonmail-bridge -v ./protonmail:/root -p 1025:25/tcp -p 1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
 ```
 
 ## docker-compose
@@ -43,8 +43,8 @@ docker run -d --name=protonbridge -v ./protonmail:/root -p 1025:25/tcp -p 1143:1
 version: "3"
 services:
   protonbridge:
-    image: ganeshlab/protonbridge:latest
-    container_name: protonbridge
+    image: ganeshlab/protonmail-bridge:latest
+    container_name: protonmail-bridge
     restart: unless-stopped
     volumes:
       - './protonmail:/root'
@@ -58,7 +58,7 @@ services:
 Please be aware that running the command above will expose your bridge to the network. Remember to use firewall if you are going to run this in an untrusted network or on a machine that has public IP address. You can also use the following command to publish the port to only localhost, which is the same behavior as the official bridge package.
 
 ```
-docker run -d --name=protonbridge -v ./protonmail:/root -p 127.0.0.1:1025:25/tcp -p 127.0.0.1:1143:143/tcp --restart=unless-stopped ganeshlab/protonbridge
+docker run -d --name=protonmail-bridge -v ./protonmail:/root -p 127.0.0.1:1025:25/tcp -p 127.0.0.1:1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
 ```
 
 Besides, you can publish only port 25 (SMTP) if you don't need to receive any email (e.g. as a email notification service).
