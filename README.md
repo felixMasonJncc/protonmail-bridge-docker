@@ -11,8 +11,6 @@ GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.c
 
 ## Tags
 
- - `deb`: Images based on the official [.deb release](https://protonmail.com/bridge/install). It only supports the `amd64` architecture.
-
 tag | description
  -- | --
 `latest` | latest `deb` image
