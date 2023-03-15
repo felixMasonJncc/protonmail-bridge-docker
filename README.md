@@ -17,7 +17,7 @@ tag | description
 `build` | latest `arm64/v8` image based on v3 branch<sup>*</sup>
 
 `*` [# 323](https://github.com/ProtonMail/proton-bridge/issues/323#issuecomment-1462705455): 
-``Gluon used to have some C++ dependencies which needed to be compiled first; those have since been removed, but Bridge's master branch doesn't yet point to this newer version of Gluon. Please be aware that the `v3` branch has not undergone any of our standard pre-release checks. Use with caution.
+```Gluon used to have some C++ dependencies which needed to be compiled first; those have since been removed, but Bridge's master branch doesn't yet point to this newer version of Gluon. Please be aware that the `v3` branch has not undergone any of our standard pre-release checks. Use with caution.
 
 ## Initialization
 
