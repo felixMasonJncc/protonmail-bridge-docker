@@ -4,7 +4,7 @@ getver=$(curl -sL https://api.github.com/repos/ProtonMail/proton-bridge/releases
 ver="${getver//v}"
 echo "$ver"-1 > VERSION
 if [ "$pre" = "false" ]; then
- docker build --no-cache -t ganeshlab/protonbridge:$ver .
+ docker build --no-cache -t ganeshlab/protonmail-bridge:$ver .
 else
- docker build --no-cache -t ganeshlab/protonbridge:$ver-dev .
+ docker build --no-cache -t ganeshlab/protonmail-bridge:$ver-dev .
 fi
