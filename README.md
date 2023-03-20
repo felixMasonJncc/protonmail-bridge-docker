@@ -2,7 +2,7 @@
 
 ![docker pulls badge](https://img.shields.io/docker/pulls/ganeshlab/protonmail-bridge)
 
-This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge). Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker). Fork of [shenxn's work](https://github.com/shenxn/protonmail-bridge-docker), all credit to them.
+This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge) built from source. Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker). Fork of [shenxn's work](https://github.com/shenxn/protonmail-bridge-docker), all credit to them.
 
 Docker Hub: [https://hub.docker.com/r/ganeshlab/protonmail-bridge](https://hub.docker.com/r/ganeshlab/protonmail-bridge)
 
@@ -12,9 +12,9 @@ GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.c
 
 tag | description
  -- | --
-`latest` | latest `stable amd64 deb` image
-`dev` | latest `pre-release amd64 deb` image
-`build` | latest `arm64/v8` image based on v3 branch<sup>1</sup>
+`latest` | latest `master branch` stable image
+`dev` | latest `master branch` pre-release image
+`unstable` | latest `v3 branch` for arm64/v8 support<sup>1</sup>
 
 1: *"Gluon used to have some C++ dependencies which needed to be compiled first; those have since been removed, but Bridge's master branch doesn't yet point to this newer version of Gluon. Please be aware that the v3 branch has not undergone any of our standard pre-release checks. Use with caution."* [# 323](https://github.com/ProtonMail/proton-bridge/issues/323#issuecomment-1462705455)
 
