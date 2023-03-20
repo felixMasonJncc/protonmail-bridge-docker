@@ -2,23 +2,20 @@
 
 set -ex
 
-VERSION=v3
+ARCH=$(uname -m)
+if [[ $ARCH == "aarch64" ]] ; then
+  BRANCH=v3
+else
+  BRANCH=master
+fi
 
 # Clone new code
-git clone -b $VERSION --single-branch https://github.com/ProtonMail/proton-bridge.git
+git clone -b $BRANCH --single-branch https://github.com/ProtonMail/proton-bridge.git
 cd proton-bridge
-git checkout $VERSION
-sed -i 's/127.0.0.1/0.0.0.0/g' internal/constants/constants.go
+git checkout $BRANCH
 
-ARCH=$(uname -m)
-if [[ $ARCH == "armv7l" ]] ; then
-	# This is expected to fail, and we use the following patch to fix
-	make build-nogui || true
-	# For 32bit architectures, there was a overflow error on the parser
-	# This is a workaround for this problem found at:
-	#   https://github.com/antlr/antlr4/issues/2433#issuecomment-774514106
-	find $(go env GOPATH)/pkg/mod/github.com/\!proton\!mail/go-rfc5322*/ -type f -exec sed -i.bak 's/(1<</(int64(1)<</g' {} +
-fi
+#FROM https://github.com/ProtonMail/proton-bridge/pull/270#issuecomment-1365037080
+sed -i 's/127.0.0.1/0.0.0.0/g' internal/constants/constants.go
 
 # Build
 make build-nogui
