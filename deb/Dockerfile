@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM debian:bullseye-slim
 LABEL maintainer="ganeshlab"
 
 EXPOSE 25/tcp
