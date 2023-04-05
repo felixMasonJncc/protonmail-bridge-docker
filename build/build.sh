@@ -2,12 +2,7 @@
 
 set -ex
 
-ARCH=$(uname -m)
-if [[ $ARCH == "aarch64" ]] ; then
-  BRANCH=v3
-else
-  BRANCH=master
-fi
+BRANCH=master
 
 # Clone new code
 git clone -b $BRANCH --single-branch https://github.com/ProtonMail/proton-bridge.git
