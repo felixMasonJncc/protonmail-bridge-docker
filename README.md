@@ -14,9 +14,6 @@ tag | description
  -- | --
 `latest` | latest `master branch` stable image
 `dev` | latest `master branch` pre-release image
-`unstable` | latest `v3 branch` for arm64/v8 support<sup>1</sup>
-
-1: *"Gluon used to have some C++ dependencies which needed to be compiled first; those have since been removed, but Bridge's master branch doesn't yet point to this newer version of Gluon. Please be aware that the v3 branch has not undergone any of our standard pre-release checks. Use with caution."* [# 323](https://github.com/ProtonMail/proton-bridge/issues/323#issuecomment-1462705455)
 
 ## Initialization
 
