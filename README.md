@@ -31,7 +31,7 @@ To run the container, use one of the following examples:
 
 ## docker
 ```
-docker run -d --name=protonmail-bridge -v /path/to/data:/root -p 1025:25/tcp -p 1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
+docker run -d --name=protonmail-bridge -v /path/to/data:/root -p 1025:1025/tcp -p 1143:1143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
 ```
 
 ## docker-compose
@@ -46,8 +46,8 @@ services:
     volumes:
       - '/path/to/data:/root'
     ports:
-      - '1025:25/tcp'
-      - '1143:143/tcp'        
+      - '1025:1025/tcp'
+      - '1143:1143/tcp'        
 ```
 
 ## Security
@@ -55,7 +55,7 @@ services:
 Please be aware that running the command above will expose your bridge to the network. Remember to use firewall if you are going to run this in an untrusted network or on a machine that has public IP address. You can also use the following command to publish the port to only localhost, which is the same behavior as the official bridge package.
 
 ```
-docker run -d --name=protonmail-bridge -v /path/to/data:/root -p 127.0.0.1:1025:25/tcp -p 127.0.0.1:1143:143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
+docker run -d --name=protonmail-bridge -v /path/to/data:/root -p 127.0.0.1:1025:1025/tcp -p 127.0.0.1:1143:1143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
 ```
 
 Besides, you can publish only port 25 (SMTP) if you don't need to receive any email (e.g. as a email notification service).
@@ -70,7 +70,7 @@ The initialization step exposes the bridge CLI so you can do things like switch 
 
 ## Build
 
-For anyone who want to build this container on your own (for development or security concerns), here is the guide to do so. First, you need to `cd` into the directory (`deb` or `build`, depending on which type of image you want). Then just run the docker build command
+For anyone who want to build this container on your own (for development or security concerns), here is the guide to do so. 
 ```
 docker build .
 ```
