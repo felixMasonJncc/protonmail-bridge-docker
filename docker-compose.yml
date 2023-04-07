@@ -7,5 +7,5 @@ services:
     volumes:
       - '/path/to/data:/root'
     ports:
-      - '1025:25/tcp'
-      - '1143:143/tcp'  
+      - '1025:1025/tcp'
+      - '1143:1143/tcp'  
