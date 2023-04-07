@@ -1,10 +1,15 @@
 #!/bin/bash
-pre=$(curl -sL https://api.github.com/repos/ProtonMail/proton-bridge/releases | jq -r '.[0] | .prerelease')
-getver=$(curl -sL https://api.github.com/repos/ProtonMail/proton-bridge/releases | jq -r '.[0] | .tag_name')
-ver="${getver//v}"
-echo "$ver"-1 > VERSION
-if [ "$pre" = "false" ]; then
- docker build --no-cache -t ganeshlab/protonmail-bridge:$ver .
+PRE=$(curl -sL https://api.github.com/repos/ProtonMail/proton-bridge/releases | jq -r '.[0] | .prerelease')
+GETVER=$(curl -sL https://api.github.com/repos/ProtonMail/proton-bridge/releases | jq -r '.[0] | .tag_name')
+VER="${GETVER//v}"
+ARCH="$(uname -m)"
+if [[ $ARCH == "aarch64" ]] ; then
+  TAG="arm64v8"
 else
- docker build --no-cache -t ganeshlab/protonmail-bridge:$ver-dev .
+  TAG="amd64"
+fi
+if [ "$PRE" = "false" ]; then
+ docker build --no-cache -t ganeshlab/protonmail-bridge:$VER-$TAG .
+else
+ docker build --no-cache -t ganeshlab/protonmail-bridge:dev-$VER-$TAG .
 fi
