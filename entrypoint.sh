@@ -1,35 +1,42 @@
 #!/bin/sh
+# thanks to https://github.com/spameier/proton-bridge-docker
 
 set -ex
+
+BRIDGE="/protonmail/proton-bridge --cli"
+BRIDGE_EXTRA_ARGS="--log-level info"
+FIFO="/fifo"
 
 # Initialize
 if [[ $1 == init ]]; then
 
-    # Initialize pass
-    gpg --generate-key --batch /protonmail/gpgparams
-    pass init pass-key
+# initialize gpg if necessary
+if ! [ -d /root/.gnupg ]; then
+  gpg --generate-key --batch << 'EOF'
+    %no-protection
+    %echo Generating GPG key
+    Key-Type:RSA
+    Key-Length:2048
+    Name-Real:pass-key
+    Expire-Date:0
+    %commit
+EOF
+fi
 
-    # Kill the other instance as only one can be running at a time.
-    # This allows users to run entrypoint init inside a running conainter
-    # which is useful in a k8s environment.
-    # || true to make sure this would not fail in case there is no running instance.
-    pkill protonmail-bridge || true
+# initialize pass if necessary
+if ! [ -d /root/.password-store ]; then
+  pass init pass-key
+fi
 
-    # Login
-    /protonmail/proton-bridge --cli $@
+# login to ProtonMail if neccessary
+if ! [ -d /root/.cache/protonmail/bridge ]; then
+  ${BRIDGE} $@
+fi
 
 else
 
-    # socat will make the conn appear to come from 127.0.0.1
-    # ProtonMail Bridge currently expects that.
-    # It also allows us to bind to the real ports :)
-    #socat TCP-LISTEN:25,fork TCP:127.0.0.1:1025 &
-    #socat TCP-LISTEN:143,fork TCP:127.0.0.1:1143 &
-
-    # Start protonmail
-    # Fake a terminal, so it does not quit because of EOF...
-    rm -f faketty
-    mkfifo faketty
-    cat faketty | /protonmail/proton-bridge --cli $@
+# keep stdin open
+[ -e ${FIFO} ] || mkfifo ${FIFO}
+cat ${FIFO} | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
 
 fi
