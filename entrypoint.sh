@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # thanks to https://github.com/spameier/proton-bridge-docker
 
 set -ex
