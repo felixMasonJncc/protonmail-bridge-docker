@@ -1,7 +1,6 @@
 # Build proton-bridge
-FROM golang:1-alpine AS build
-
-RUN apk add --no-cache git libsecret-dev bash alpine-sdk
+FROM golang:bookworm AS build
+RUN apt-get update && apt-get install -y --no-install-recommends git build-essential libsecret-1-dev
 RUN git clone https://github.com/ProtonMail/proton-bridge.git
 
 WORKDIR /go/proton-bridge/
@@ -11,13 +10,13 @@ RUN sed -i 's/127.0.0.1/0.0.0.0/g' internal/constants/constants.go
 RUN make build-nogui
 
 # Production image, copy files and run
-FROM alpine:3
+FROM debian:stable-slim
 LABEL maintainer="ganeshlab"
 
-RUN apk add --no-cache pass libsecret gnupg
+RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates
 
 COPY --from=build /go/proton-bridge/bridge /protonmail/
 COPY --from=build /go/proton-bridge/proton-bridge /protonmail/
 COPY entrypoint.sh /protonmail/
 
-ENTRYPOINT ["sh", "/protonmail/entrypoint.sh"]
+ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]
