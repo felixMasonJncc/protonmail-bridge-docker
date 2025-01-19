@@ -1,12 +1,13 @@
-# ProtonMail IMAP/SMTP Bridge Docker Container
+# ProtonMail IMAP/SMTP Bridge Docker Container - WIP - nothing interesting here yet
 
 ![downloads](https://img.shields.io/docker/pulls/ganeshlab/protonmail-bridge?style=for-the-badge) ![amd](https://img.shields.io/docker/v/ganeshlab/protonmail-bridge/latest?arch=amd64&label=%20&style=for-the-badge)  ![arm](https://img.shields.io/docker/v/ganeshlab/protonmail-bridge?arch=arm64&label=%20&style=for-the-badge) 
 
-This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge) built from source. Some of the scripts are based on [Hendrik Meyer's work](https://gitlab.com/T4cC0re/protonmail-bridge-docker). Fork of [shenxn's work](https://github.com/shenxn/protonmail-bridge-docker), all credit to them.
+This is an unofficial Docker container of the [ProtonMail Bridge](https://github.com/ProtonMail/proton-bridge) with the intention of it being built from release packages and there will be some mods to enable easier configuration when running in QNAP container station. This is a fork of [ganeshlab
+'s excellent work](https://github.com/ganeshlab/protonmail-bridge-docker) which in turn derives from others, see source repo for detials. All credit to those involved.
 
-Docker Hub: [https://hub.docker.com/r/ganeshlab/protonmail-bridge](https://hub.docker.com/r/ganeshlab/protonmail-bridge)
+Docker Hub: Not yet released
 
-GitHub: [https://github.com/ganeshlab/protonmail-bridge-docker](https://github.com/ganeshlab/protonmail-bridge-docker)
+GitHub: [https://github.com/felixMasonJncc/protonmail-bridge-docker](https://github.com/felixMasonJncc/protonmail-bridge-docker)
 
 ## Tags
 
