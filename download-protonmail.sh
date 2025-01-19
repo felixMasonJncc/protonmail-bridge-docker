@@ -23,11 +23,13 @@ download_package() {
     curl -L "$package_url" -o "$package_name"
 }
 
-$download_package_signature() {
+download_package_signature() {
     local package_sig_url="$1"
     local package_sig_name="$2"
     curl -L "$package_sig_url" -o "$package_sig_name"
 }
+
+
 
 
 # Main execution
@@ -61,6 +63,8 @@ main() {
 
     echo "Package downloaded successfully"
     echo "Package signature downloaded successfully"
+
+    
 
 }
 
