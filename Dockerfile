@@ -21,7 +21,6 @@ RUN ./download-protonmail.sh
 
 # Instal proton-bridge
 FROM ubuntu:latest
-RUN apt-get update && apt-get install -y --no-install-recommends git build-essential libsecret-1-dev
 LABEL maintainer="felixmasonjncc"
 
 RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates
