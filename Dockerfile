@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-
 
 WORKDIR /install
 
-COPY --from=build /package-download/validated/protonmail-bridge.deb .
+COPY --from=verify /package-download/validated/protonmail-bridge.deb .
 RUN apt install ./protonmail-bridge.deb
 
 COPY entrypoint.sh /protonmail/
