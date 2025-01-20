@@ -64,7 +64,25 @@ main() {
     echo "Package downloaded successfully"
     echo "Package signature downloaded successfully"
 
-    
+    # check package using signature
+    if ! gpg --verify "$package_name.sig" "$package_name"; then
+        echo "Package signature verification failed"
+        exit 1
+    fi
+    echo "Package signature verified successfully"
+
+    # check package against protonmail public key
+    if ! debsig-verify "$package_name"; then
+        echo "Package signature verification failed"
+        exit 1
+    fi
+
+    echo "Package signature verified successfully"
+
+    mkdir validated
+    mv "$package_name" validated/protonmail-bridge.deb
+
+    echo "Moved package to output dir"
 
 }
 
