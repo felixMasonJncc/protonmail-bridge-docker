@@ -39,4 +39,6 @@ COPY entrypoint.sh .
 
 RUN chmod +x ./init-bridge.sh 
 
+ENV PATH="$PATH:/protonmail"
+
 ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]
