@@ -30,8 +30,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-
 WORKDIR /install
 
 COPY --from=verify /package-download/validated/protonmail-bridge.deb .
-RUN apt install ./protonmail-bridge.deb
+RUN apt install ./protonmail-bridge.deb && rm -rf protonmail-bridge.deb
 
-COPY entrypoint.sh /protonmail/
+WORKDIR /protonmail
+
+COPY init-bridge.sh .
+COPY entrypoint.sh .
+
+RUN chmod +x ./init-bridge.sh 
 
 ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]
