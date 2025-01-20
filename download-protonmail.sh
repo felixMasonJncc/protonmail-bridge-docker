@@ -29,10 +29,6 @@ download_package_signature() {
     curl -L "$package_sig_url" -o "$package_sig_name"
 }
 
-
-
-
-# Main execution
 main() {
     local latest_release
     local package_asset
