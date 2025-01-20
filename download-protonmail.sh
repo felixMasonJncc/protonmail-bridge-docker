@@ -65,7 +65,7 @@ main() {
         echo "Package signature verification failed"
         exit 1
     fi
-    echo "Package signature verified successfully"
+    echo "Package signature verified successfully - check 1"
 
     # check package against protonmail public key
     if ! debsig-verify "$package_name"; then
@@ -73,7 +73,7 @@ main() {
         exit 1
     fi
 
-    echo "Package signature verified successfully"
+    echo "Package signature verified successfully - check 2"
 
     mkdir validated
     mv "$package_name" validated/protonmail-bridge.deb
