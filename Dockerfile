@@ -17,7 +17,9 @@ RUN curl -L "https://proton.me/download/bridge/bridge.pol" - o "bridge.pol" \
 WORKDIR /package-download
 
 COPY download-protonmail.sh .
-RUN ./download-protonmail.sh
+# Takes github api ref as the first and only arg.
+# Writes out to WORKDIR/validated/protonmail-bridge.deb - or errors out.
+RUN ./download-protonmail.sh "https://api.github.com/repos/ProtonMail/proton-bridge/releases"
 
 # Instal proton-bridge
 FROM ubuntu:latest

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROTONMAIL_RELEASE_API_URL="https://api.github.com/repos/ProtonMail/proton-bridge/releases"
+PROTONMAIL_RELEASE_API_URL=$1
 
 get_latest_stable_release() {
     curl -sL "$PROTONMAIL_RELEASE_API_URL" | jq 'first(.[] | select(.prerelease==false))'
