@@ -1,6 +1,6 @@
 # Download and verify latest protonmail bridge release
 FROM ubuntu:latest as verify
-RUN apt-get update && apt-get install -y --no-install-recommends curl debsig-verify debian-keyring jq
+RUN apt-get update && apt-get install -y --no-install-recommends curl debsig-verify debian-keyring jq ca-certificates
 
 # From https://proton.me/support/verifying-bridge-package
 # Install the protonmail public key 
@@ -10,7 +10,7 @@ RUN curl -L "https://proton.me/download/bridge/bridge_pubkey.gpg" -o "bridge_pub
     && mv debsig.gpg /usr/share/debsig/keyrings/E2C75D68E6234B07
 
 # Install the public key policy
-RUN curl -L "https://proton.me/download/bridge/bridge.pol" - o "bridge.pol" \
+RUN curl -L "https://proton.me/download/bridge/bridge.pol" -o "bridge.pol" \
     && mkdir -p /etc/debsig/policies/E2C75D68E6234B07 \
     && mv bridge.pol /etc/debsig/policies/E2C75D68E6234B07
 
