@@ -19,7 +19,7 @@ WORKDIR /package-download
 COPY download-protonmail.sh .
 # Takes github api ref as the first and only arg.
 # Writes out to WORKDIR/validated/protonmail-bridge.deb - or errors out.
-RUN ./download-protonmail.sh "https://api.github.com/repos/ProtonMail/proton-bridge/releases"
+RUN chmod +x download-protonmail.sh && ./download-protonmail.sh "https://api.github.com/repos/ProtonMail/proton-bridge/releases"
 
 # Instal proton-bridge
 FROM ubuntu:latest
