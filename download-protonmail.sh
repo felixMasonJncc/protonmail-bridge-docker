@@ -101,6 +101,14 @@ main() {
 
     echo "Moved package to output dir"
 
+    cat << EOF > validated/version-info.json
+    {
+        "bridge_version": "$bridge_version",
+        "bridge_release_name": "$bridge_release_name"
+    }
+    EOF
+
+    echo "Wrote out version info to validated/version-info.json"
 }
 
 main
