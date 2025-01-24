@@ -1,5 +1,5 @@
 # Download and verify latest protonmail bridge release
-FROM ubuntu:latest as verify
+FROM ubuntu:latest AS verify
 RUN apt-get update && apt-get install -y --no-install-recommends curl debsig-verify debian-keyring jq ca-certificates
 
 # From https://proton.me/support/verifying-bridge-package
@@ -19,26 +19,28 @@ WORKDIR /package-download
 COPY download-protonmail.sh .
 # Takes github api ref as the first and only arg.
 # Writes out to WORKDIR/validated/protonmail-bridge.deb - or errors out.
-RUN chmod +x download-protonmail.sh && ./download-protonmail.sh "https://api.github.com/repos/ProtonMail/proton-bridge/releases"
+RUN chmod +x download-protonmail.sh 
 
-# Instal proton-bridge
-FROM ubuntu:latest
-LABEL maintainer="felixmasonjncc"
+# && ./download-protonmail.sh "https://api.github.com/repos/ProtonMail/proton-bridge/releases"
 
-RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates
+# # Instal proton-bridge
+# FROM ubuntu:latest
+# LABEL maintainer="felixmasonjncc"
 
-WORKDIR /install
+# RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates
 
-COPY --from=verify /package-download/validated/protonmail-bridge.deb .
-RUN apt install ./protonmail-bridge.deb && rm -rf protonmail-bridge.deb
+# WORKDIR /install
 
-WORKDIR /protonmail
+# COPY --from=verify /package-download/validated/protonmail-bridge.deb .
+# RUN apt install ./protonmail-bridge.deb && rm -rf protonmail-bridge.deb
 
-COPY init-bridge.sh .
-COPY entrypoint.sh .
+# WORKDIR /protonmail
 
-RUN chmod +x ./init-bridge.sh 
+# COPY init-bridge.sh .
+# COPY entrypoint.sh .
 
-ENV PATH="$PATH:/protonmail"
+# RUN chmod +x ./init-bridge.sh 
 
-ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]
+# ENV PATH="$PATH:/protonmail"
+
+# ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]

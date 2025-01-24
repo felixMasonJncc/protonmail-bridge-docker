@@ -2,6 +2,8 @@
 
 PROTONMAIL_RELEASE_API_URL=$1
 
+echo "Downloading latest release from $PROTONMAIL_RELEASE_API_URL"
+
 get_latest_stable_release() {
     curl -sL "$PROTONMAIL_RELEASE_API_URL" | jq 'first(.[] | select(.prerelease==false))'
 }
@@ -73,7 +75,7 @@ main() {
         echo "Failed to download public key"
         exit 1
     fi
-    
+
     echo "Public key downloaded successfully"
 
     # install public key
