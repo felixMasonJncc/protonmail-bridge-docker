@@ -21,24 +21,24 @@ COPY download-protonmail.sh .
 # Writes out to WORKDIR/validated/protonmail-bridge.deb - or errors out.
 RUN chmod +x download-protonmail.sh  && ./download-protonmail.sh "https://api.github.com/repos/ProtonMail/proton-bridge/releases"
 
-# # Instal proton-bridge
-# FROM ubuntu:latest
-# LABEL maintainer="felixmasonjncc"
+# Instal proton-bridge
+FROM ubuntu:latest
+LABEL maintainer="felixmasonjncc"
 
-# RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates
+RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates
 
-# WORKDIR /install
+WORKDIR /install
 
-# COPY --from=verify /package-download/validated/protonmail-bridge.deb .
-# RUN apt install ./protonmail-bridge.deb && rm -rf protonmail-bridge.deb
+COPY --from=verify /package-download/validated/protonmail-bridge.deb .
+RUN apt install -y ./protonmail-bridge.deb && rm -rf protonmail-bridge.deb
 
-# WORKDIR /protonmail
+WORKDIR /protonmail
 
-# COPY init-bridge.sh .
-# COPY entrypoint.sh .
+COPY init-bridge.sh .
+COPY entrypoint.sh .
 
-# RUN chmod +x ./init-bridge.sh 
+RUN chmod +x ./init-bridge.sh 
 
-# ENV PATH="$PATH:/protonmail"
+ENV PATH="$PATH:/protonmail"
 
-# ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]
+ENTRYPOINT ["bash", "/protonmail/entrypoint.sh"]
