@@ -25,7 +25,7 @@ RUN chmod +x download-protonmail.sh  && ./download-protonmail.sh "https://api.gi
 FROM ubuntu:latest
 LABEL maintainer="felixmasonjncc"
 
-RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates
+RUN apt-get update && apt-get install -y --no-install-recommends pass libsecret-1-0 ca-certificates jq
 
 WORKDIR /install
 
@@ -33,6 +33,8 @@ COPY --from=verify /package-download/validated/protonmail-bridge.deb .
 RUN apt install -y ./protonmail-bridge.deb && rm -rf protonmail-bridge.deb
 
 WORKDIR /protonmail
+
+COPY --from=verify /package-download/validated/version-info.json .
 
 COPY init-bridge.sh .
 COPY entrypoint.sh .
