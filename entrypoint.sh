@@ -21,8 +21,6 @@ if [[ $1 == release-name ]]; then
 fi
 
 
-
-
 # Initialize
 if [[ $1 == init ]]; then
 
@@ -31,8 +29,11 @@ if [[ $1 == init ]]; then
 
 else
 
-# keep stdin open
-[ -e ${FIFO} ] || mkfifo ${FIFO}
-cat ${FIFO} | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
-
+# initialize pass if necessary
+if ! [ -d "/root/.password-store" ] || ! [ -d "/root/.cache/protonmail/bridge" ]; then
+    echo "Run init-bridge first"
+else
+    # keep stdin open
+    [ -e ${FIFO} ] || mkfifo ${FIFO}
+    cat ${FIFO} | ${BRIDGE} ${BRIDGE_EXTRA_ARGS}
 fi

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BRIDGE="/protonmail/proton-bridge --cli"
+
 # initialize gpg if necessary
 if ! [ -d /root/.gnupg ]; then
   gpg --generate-key --batch << 'EOF'
