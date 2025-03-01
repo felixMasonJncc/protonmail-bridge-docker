@@ -35,6 +35,7 @@ To run the container, use one of the following examples:
 docker run -d --name=protonmail-bridge -v /path/to/data:/root -p 1025:1025/tcp -p 1143:1143/tcp --restart=unless-stopped ganeshlab/protonmail-bridge
 ```
 
+
 ## docker-compose
 
 ```yaml
